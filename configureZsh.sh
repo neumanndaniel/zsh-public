@@ -43,5 +43,5 @@ if [[ $1 == "cloudshell" ]]; then
     curl -sL https://run.linkerd.io/install | sh
     export PATH=$PATH:$HOME/.linkerd2/bin
     linkerd version
-    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Done..."
+    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Done. Please restart your Azure Cloud Shell session..."
 fi
