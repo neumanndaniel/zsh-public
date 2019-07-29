@@ -6,12 +6,12 @@ if [[ $1 == "cloudshell" ]]; then
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .zshrc into $HOME folder..."
-    cp ./zsh/AzureCloudShell/.zshrc $HOME/.zshrc
+    cp ./AzureCloudShell/.zshrc $HOME/.zshrc
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Backup .bashrc and copy .bashrc into $HOME folder..."
     mv .bashrc .bashrc_backup
-    cp ./zsh/AzureCloudShell/.bashrc $HOME/.bashrc
+    cp ./AzureCloudShell/.bashrc $HOME/.bashrc
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .exrc into $HOME folder..."
-    cp ./zsh/global/.exrc $HOME/.exrc
+    cp ./global/.exrc $HOME/.exrc
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install zsh-autosuggestions..."
     git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install zsh-syntax-highlighting..."
