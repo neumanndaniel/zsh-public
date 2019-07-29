@@ -8,7 +8,7 @@ if [[ $1 == "cloudshell" ]]; then
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .zshrc into $HOME folder..."
     cp ./AzureCloudShell/.zshrc $HOME/.zshrc
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Backup .bashrc and copy .bashrc into $HOME folder..."
-    mv .bashrc .bashrc_backup
+    mv $HOME/.bashrc $HOME/.bashrc_backup
     cp ./AzureCloudShell/.bashrc $HOME/.bashrc
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .exrc into $HOME folder..."
     cp ./global/.exrc $HOME/.exrc
