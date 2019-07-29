@@ -4,6 +4,8 @@ set -e
 
 if [[ $1 == "cloudshell" ]]; then
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install oh-my-zsh..."
+    export CHSH="no"
+    export RUNZSH="no"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .zshrc into $HOME folder..."
     cp ./AzureCloudShell/.zshrc $HOME/.zshrc
