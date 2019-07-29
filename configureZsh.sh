@@ -34,6 +34,7 @@ if [[ $1 == "cloudshell" ]]; then
     ./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" install \
         --manifest=krew.yaml --archive=krew.tar.gz
     )
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
     kubectl krew update
     kubectl krew list
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install Linkerd CLI..."
