@@ -28,7 +28,8 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-#Autocomplete Azure CLI
+#Autocomplete
+autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
 
