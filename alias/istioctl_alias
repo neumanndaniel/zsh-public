@@ -1,5 +1,6 @@
 alias idg='istioctl dashboard grafana'
 alias idj='istioctl dashboard jaeger'
+alias idk='istioctl dashboard kiali'
 alias idp='istioctl dashboard prometheus'
 alias idc='istioctl dashboard controlz -n istio-system `kubectl select pods -n istio-system -l istio=pilot`'
 alias ide='istioctl dashboard envoy `kubectl select pods`'
