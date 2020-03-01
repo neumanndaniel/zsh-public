@@ -43,5 +43,5 @@ if [[ $1 == "cloudshell" ]]; then
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
     kubectl krew update
     kubectl krew list
-    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Done. Run >>exit<< to restart your Azure Cloud Shell session..."
+    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Done. Type exit to restart your Azure Cloud Shell session..."
 fi
