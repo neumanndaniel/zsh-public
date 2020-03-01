@@ -44,7 +44,6 @@ kubeon() {
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
-source ~/_istioctl
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOPATH="$HOME/go"
