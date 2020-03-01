@@ -23,10 +23,10 @@ if [[ $1 == "cloudshell" ]]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install and configure kubectx and kubens..."
     git clone https://github.com/ahmetb/kubectx.git $HOME/temp
-    mkdir $HOME/bin
+    mkdir $HOME/bin || true
     cp $HOME/temp/kubectx $HOME/bin/kubectx
     cp $HOME/temp/kubens $HOME/bin/kubens
-    mkdir -p $HOME/.oh-my-zsh/completions
+    mkdir -p $HOME/.oh-my-zsh/completions || true
     chmod -R 755 $HOME/.oh-my-zsh/completions
     cp $HOME/temp/completion/kubectx.zsh $HOME/.oh-my-zsh/completions/_kubectx.zsh
     cp $HOME/temp/completion/kubens.zsh $HOME/.oh-my-zsh/completions/_kubens.zsh
