@@ -3,12 +3,15 @@
 set -e
 
 if [[ $1 == "cloudshell" ]]; then
-    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install oh-my-zsh..."
+    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install oh-my-zsh and Powerlevel10k theme..."
     export CHSH="no"
     export RUNZSH="no"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .zshrc into $HOME folder..."
     cp ./AzureCloudShell/.zshrc $HOME/.zshrc
+    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Copy .p10k.zsh into $HOME folder..."
+    cp ./AzureCloudShell/.p10k.zsh $HOME/.p10k.zsh
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Backup .bashrc and copy .bashrc into $HOME folder..."
     mv $HOME/.bashrc $HOME/.bashrc_backup
     cp ./AzureCloudShell/.bashrc $HOME/.bashrc
@@ -30,18 +33,15 @@ if [[ $1 == "cloudshell" ]]; then
     rm -rf $HOME/temp
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install and initialize krew..."
     (
-    set -x; cd "$(mktemp -d)" &&
-    curl -fsSLO "https://storage.googleapis.com/krew/v0.2.1/krew.{tar.gz,yaml}" &&
-    tar zxvf krew.tar.gz &&
-    ./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" install \
-        --manifest=krew.yaml --archive=krew.tar.gz
+      set -x; cd "$(mktemp -d)" &&
+      curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}" &&
+      tar zxvf krew.tar.gz &&
+      KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+      "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+      "$KREW" update
     )
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
     kubectl krew update
     kubectl krew list
-    echo "[$(date +"%Y-%m-%d %H:%M:%S")] Install Linkerd CLI..."
-    curl -sL https://run.linkerd.io/install | sh
-    export PATH=$PATH:$HOME/.linkerd2/bin
-    linkerd version
     echo "[$(date +"%Y-%m-%d %H:%M:%S")] Done. Please restart your Azure Cloud Shell session..."
 fi
